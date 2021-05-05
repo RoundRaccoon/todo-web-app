@@ -12,7 +12,7 @@
 
 #mainApp{
     width: 50vw;
-    height: 6vh;
+    height: fit-content;
     position: relative;
     margin: auto;
     box-shadow: 0vh 1vh 2vh 2vh #E0E0E0;
@@ -34,11 +34,10 @@
 }
 
 #inputBox{
-    position: absolute;
-    height: 6vh;
-    width: 45vw;
-    left: 5vh;
+    height: 100%;
+    width: 100%;
     font-size: 3vh;
+    margin-left: 1vw;
     outline: none;
     border: none;;
     color: #4D4D4D;
@@ -48,7 +47,7 @@
 
 .item{
     height: 6vh;
-    width: 50vw;
+    width: 50vh;
     font-size: 2.5vh;
     color: #4D4D4D;
     border-top-style: solid;
