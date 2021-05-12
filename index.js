@@ -11,6 +11,10 @@ function updateItemList() {
 
 }
 
+function renderList(items) {
+    //let currentList = 
+}
+
 var checkBoxFunction = function () {
     console.log("pipi");
 }

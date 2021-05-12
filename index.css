@@ -119,6 +119,24 @@
     font-size: 2.5vh;
 }
 
+.footerMiddle{
+    display: flex;
+    flex-direction: row;
+}
+
+.footerMiddleMiddle{
+    margin-left: 1.4vh;
+    margin-right: 1.4vh;
+}
+
+.footerLeft{
+    margin-left: 0.7vh;
+}
+
+.footerRight{
+    margin-right: 0.7vh;
+}
+
 #firstEnd{
     height: 1vh;
     width: 49vw;
