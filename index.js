@@ -1,5 +1,5 @@
 let inputBox = document.getElementById("inputBox");
-let itemList = document.getElementById("itemList");
+let itemListDiv = document.getElementById("itemList");
 let itemCheckBoxes = document.getElementsByClassName("itemCheck");
 let itemCrossBoxes = document.getElementsByClassName("itemCross");
 
@@ -12,43 +12,74 @@ function updateItemList() {
 }
 
 function renderList(items) {
-    //let currentList = 
+    itemListDiv.innerHTML = '';
+    for (var index in items) {
+
+        let newElement = document.createElement("div");
+        newElement.classList.add("item");
+
+        newElementCheck = document.createElement("img");
+        newElementCheck.src = "iconCheck.png";
+        newElementCheck.classList.add("itemCheck");
+
+        newElementText = document.createElement("div");
+        newElementText.append(items[index].text);
+        newElementText.classList.add("itemText");
+
+        newElementCross = document.createElement("img");
+        newElementCross.src = "iconCross.png";
+        newElementCross.classList.add("itemCross");
+
+        if (items[index].active == false) {
+            newElementCheck.classList.add("itemCheckHidden");
+        }
+        else {
+            newElementText.classList.add("itemTextCrossed");
+        }
+
+        newElementCheck.classList.add("child" + items[index].id);
+        newElementCross.classList.add("child" + items[index].id);
+
+        newElement.appendChild(newElementCheck);
+        newElement.appendChild(newElementText);
+        newElement.appendChild(newElementCross);
+
+        newElementCheck.addEventListener('click', checkBoxFunction, false);
+        newElementCross.addEventListener('click', crossBoxFunction, false);
+
+        itemListDiv.appendChild(newElement);
+    }
+
 }
 
-var checkBoxFunction = function () {
-    console.log("pipi");
+var crossBoxFunction = function (event) {
+    for (var index in items) {
+        if (event.target.classList.contains("child" + items[index].id)) {
+            items.splice(index, 1);
+            renderList(items);
+        }
+    }
 }
 
-for (var i = 0; i < itemCheckBoxes.length; ++i) {
-    itemCheckBoxes[i].addEventListener('click', checkBoxFunction, false);
+var checkBoxFunction = function (event) {
+    for (var index in items) {
+        if (event.target.classList.contains("child" + items[index].id)) {
+
+            if (items[index].active == false)
+                items[index].active = true;
+            else
+                items[index].active = false;
+            renderList(items);
+        }
+    }
 }
 
 document.body.onkeyup = (e) => {
     if (e.keyCode == 13) {
         if (inputBox.value.trim().localeCompare("")) {
-            let newElement = document.createElement("div");
-            newElement.classList.add("item");
-
-            newElementCheck = document.createElement("img");
-            newElementCheck.src = "iconCheck.png";
-            newElementCheck.classList.add("itemCheck");
-            newElementCheck.classList.add("itemCheckHidden");
-
-            newElementText = document.createElement("div");
-            newElementText.append(inputBox.value.trim());
-            newElementText.classList.add("itemText");
-
-            newElementCross = document.createElement("img");
-            newElementCross.src = "iconCross.png";
-            newElementCross.classList.add("itemCross");
-
             items.push({ "text": inputBox.value.trim(), "active": false, "id": items.length + 1 });
-
-            newElement.appendChild(newElementCheck);
-            newElement.appendChild(newElementText);
-            newElement.appendChild(newElementCross);
-            itemList.appendChild(newElement);
             inputBox.value = "";
+            renderList(items);
         }
     }
 }
