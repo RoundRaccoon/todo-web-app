@@ -33,6 +33,10 @@
     background-size: contain;
 }
 
+.arrowHidden{
+    visibility: hidden;
+}
+
 #inputBox{
     height: 100%;
     width: 100%;
@@ -131,10 +135,19 @@
 
 .footerLeft{
     margin-left: 0.7vh;
+    color: #4D4D4D;
 }
 
 .footerRight{
     margin-right: 0.7vh;
+}
+
+.footerHidden{
+    visibility: hidden;
+}
+
+.footerPressed{
+    color:#4D4D4D;
 }
 
 #firstEnd{

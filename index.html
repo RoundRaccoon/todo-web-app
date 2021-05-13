@@ -10,19 +10,19 @@
     <div id="title">todos</div>
     <div id="mainApp">
         <div id="inputBoxWrapper">
-            <div id="arrow"></div>
+            <div id="arrow" class="arrowHidden"></div>
             <input id="inputBox" placeholder="What needs be done ?">
         </div>
         <div id="itemList">
         </div>
-        <div id="footer">
-            <div class="footerText footerLeft" id="itemCounter">n items left</div>
+        <div id="footer" class="footerHidden">
+            <div class="footerText footerLeft" id="itemCounter">0 items left</div>
             <div class="footerText footerMiddle">
-                <div>All</div>
-                <div class="footerMiddleMiddle">Active</div>
-                <div>Completed</div>
+                <div id="allButton" class="footerPressed">All</div>
+                <div class="footerMiddleMiddle" id="activeButton">Active</div>
+                <div id="completedButton">Completed</div>
             </div>
-            <div class="footerText footerRight">Clear completed</div>
+            <div class="footerText footerRight arrowHidden" id="clearCompleted">Clear completed</div>
         </div>
     </div>
     <div id="firstEnd"></div>
